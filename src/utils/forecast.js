@@ -6,6 +6,7 @@ const forecast = (latitude, longitude, callback) => {
     const url = 'https://api.darksky.net/forecast/' + API_KEY + '/' + latitude + ',' + longitude
 
     request( { url, json : true }, (error, response) => {
+        //console.log(response)
         if(error) {
             callback('unable to connect to weather server!')
         }

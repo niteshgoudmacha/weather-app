@@ -6,11 +6,12 @@ const access_token = process.env.ACCESS_TOKEN
 
 const geocode = (address, callback) => {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json?access_token=' + access_token + '&limit=1'
-
+    
     request( { url, json: true }, (error, response) => {
         if(error){
             callback('unable to connect to location services!')
         }
+        // console.log(response.body)
         else if(response.body.features.length === 0){
             callback('unable to find location, try another location.')
         }
