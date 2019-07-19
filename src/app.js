@@ -3,10 +3,13 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode.js')
 const forecast = require('./utils/forecast.js')
+require('dotenv').config()
 
+// console.log(process.env)
 // console.log(__dirname)
 // console.log(__filename)
 const app = express()
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -57,7 +60,7 @@ app.get('/weather', (req, res) => {
         if(error) {
             return res.send({ error })
         }
-        console.log(latitude,longitude,location)
+        // console.log(latitude,longitude,location)
         forecast(latitude, longitude, (error, forecastData) => {
             if(error) {
                 return res.send({ error })
@@ -75,7 +78,7 @@ app.get('/weather', (req, res) => {
 app.get('/help/*', (req, res) => {
     res.render('404', {
         title: '404',
-        name: 'Andrew Mead',
+        name: 'Nitesh Goud',
         errorMessage: 'Help article not found.'
     })
 })
@@ -88,6 +91,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('server is up on port 3000')
+app.listen(port, () => {
+    console.log('server is up on port '+ port)
 })

@@ -1,8 +1,9 @@
 const request = require('request')
+require('dotenv').config()
 
-
+const API_KEY = process.env.WEATHER_API_KEY
 const forecast = (latitude, longitude, callback) => {
-    const url = 'https://api.darksky.net/forecast/fccad0d15e15d4e1924f781789cbc830/' + latitude + ',' + longitude
+    const url = 'https://api.darksky.net/forecast/' + API_KEY + '/' + latitude + ',' + longitude
 
     request( { url, json : true }, (error, response) => {
         if(error) {
