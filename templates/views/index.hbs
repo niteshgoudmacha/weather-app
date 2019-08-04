@@ -3,10 +3,14 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather</title>
     <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/style.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -14,12 +18,15 @@
         {{>header}}
 
         <p>Use this site to get your weather!</p>
-        <form action="">
-            <input placeholder="Location">
-            <button>Search</button>
+        <form id="formid" action="">
+            <input type = "text" name = "search" placeholder="Location..">
+            <button type="submit" id = "submit"><i class="fa fa-search"></i></button>
         </form>
-        <p id="message-1"></p>
-        <p id = "message-2"></p>
+        <span>
+            <button id = "getlocation" style="font-size:24px"><i class="material-icons">my_location</i>Current Location</button>
+            <p id="message-1"></p>
+            <p id = "message-2"></p>
+        </span>
     </div>
 
     {{>footer}}

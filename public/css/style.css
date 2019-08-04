@@ -1,21 +1,24 @@
 body {
-    color: #333333;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #fffffff3;
+    font-family: Times;
+    font-size: x-large;
+    font-style: normal;
     max-width: 650px;
     margin: 0 auto;
     padding: 0 16px;
+    background-image: url('../image/2.jpg');
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* text-size-adjust: 10px; */
 }
 
 footer {
-    color: #888888;
-    border-top: 1px solid #eeeeee;
-    margin-top: 16px;
+    color: #000000;
+    border-top: 1px solid #093ff3;
+    margin-top: 30%;
     padding: 16px 0;
-}
-
-header {
-    margin-top: 16px;
-    margin-bottom: 48px;
 }
 
 h1 {
@@ -24,18 +27,65 @@ h1 {
 }
 
 header a {
-    color: #888888;
+    color: #093ff3;
     margin-right: 16px;
     text-decoration: none;
 }
 
-input {
-    box-shadow: #cccccc; 
-    padding: 8px;
+* {
+    box-sizing: border-box;
+  }
+
+input[type=text] {
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 30%;
+    background: #f1f1f1;
+}
+  
+  #submit {
+    float: left;
+    width: 15%;
+    padding: 10px;
+    background: rgb(12, 139, 243);
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; 
+    cursor: pointer;
+  }
+  
+#formid button:hover {
+    background: #0b7dda;
+}
+  
+input[type=text]:focus {
+    width: 50%;
 }
 
-button {
-    cursor: pointer;
-    border: 1px solid #888888;
-    background: #888888;
+#getlocation {
+  margin-left: 10px;
+  margin-top: 5px;
 }
+
+
+header a:hover {
+  color: #0b7dda;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+
+span button {
+  background:none;
+  color:inherit;
+  border:none; 
+  font: inherit;
+  cursor: pointer;
+}
+
+

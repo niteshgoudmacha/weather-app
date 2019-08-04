@@ -3,6 +3,8 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode.js')
 const forecast = require('./utils/forecast.js')
+const reverseGeocode = require('./utils/reverse-geocode.js')
+const currentLocation = require('./utils/current-location.js')
 require('dotenv').config()
 
 // console.log(process.env)
@@ -35,7 +37,7 @@ app.get('', (req, res) => {
 // app.com/help
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpText: 'Some help text',
+        helpText: 'Adding New Features soon...',
         title: 'Help',
         name: 'Nitesh Goud'
     })
@@ -48,6 +50,26 @@ app.get('/about', (req, res) => {
         name:'Nitesh Goud'
     })
 })
+// current Location
+app.get('/currentlocation', (req, res) => {
+    // console.log('current location route')
+    reverseGeocode(req.query.latitude, req.query.longitude, (error, {latitude, longitude, location}) => {
+        if(error) {
+            return res.send({ error })
+        }
+        // console.log(latitude,longitude,location)
+        forecast(latitude, longitude, (error, forecastData) => {
+            if(error) {
+                return res.send({ error })
+            }
+            res.send({
+                forecast: forecastData,
+                location
+            })
+        })
+    })
+    
+})
 
 // app.com/weather
 app.get('/weather', (req, res) => {
@@ -56,6 +78,7 @@ app.get('/weather', (req, res) => {
             error: 'You must provide an address...'
         })
     }
+    // console.log('weather route')
     geocode(req.query.address, (error, {location, latitude, longitude} = {}) => {
         if(error) {
             return res.send({ error })
